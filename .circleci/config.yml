@@ -14,6 +14,7 @@ jobs:
             name: "Running Tests"
             command: npm run test
   deploy-job:
+      working_directory: ~/app
       executor:
           name: node/default
       steps:
@@ -23,7 +24,7 @@ jobs:
         - checkout
         - run: 
             name: Copy docker-compose.yml to VM
-            command: scp -o "StrictHostKeyChecking no" ./docker-compose.yml ec2-user@$SSH_HOST:docker-compose.yml
+            command: scp -o "StrictHostKeyChecking no" ~/app/docker-compose.yml ec2-user@$SSH_HOST:docker-compose.yml
         - run: 
             name: Build and push image
             command: | 
