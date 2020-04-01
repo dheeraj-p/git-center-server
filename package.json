@@ -1,0 +1,28 @@
+{
+  "name": "git-center-server",
+  "version": "1.0.0",
+  "description": "GitCenter Web interface for managing repositories and account",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "test": "echo Passed!",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dheeraj-p/git-center-server.git"
+  },
+  "author": "STEP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dheeraj-p/git-center-server/issues"
+  },
+  "homepage": "https://github.com/dheeraj-p/git-center-server#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "next": "^9.3.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

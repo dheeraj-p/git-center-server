@@ -1,0 +1,43 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  test-job:
+      executor:
+          name: node/default
+      steps:
+        - checkout
+        - run:
+            name: "Installing dependencies"
+            command: npm install
+        - run: 
+            name: "Running Tests"
+            command: npm run test
+  deploy-job:
+      executor:
+          name: node/default
+      steps:
+        - add_ssh_keys:
+            fingerprints:
+              - "1e:b9:34:31:19:02:f4:7b:f4:30:f2:dc:9f:54:5c:7a"
+        - checkout
+        - run: 
+            name: Copy docker-compose.yml to VM
+            command: scp -o "StrictHostKeyChecking no" ./docker-compose.yml ec2-user@$SSH_HOST:docker-compose.yml
+        - run: 
+            name: Build and push image
+            command: | 
+              source ./bin/build_image
+              echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
+              docker push 1236dheerajp/git-center-server:latest
+        - run: 
+            name: Restart server
+            command: ssh -o "StrictHostKeyChecking no" ec2-user@$SSH_HOST "docker-compose pull && docker-compose up -d --remove-orphans"
+workflows:
+    deploy:
+      jobs:
+        - manual-approval:
+            type: approval
+        - deploy-job:
+            requires:
+              - manual-approval 
