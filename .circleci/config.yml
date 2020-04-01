@@ -34,7 +34,7 @@ jobs:
               docker push 1236dheerajp/git-center-server:latest
         - run: 
             name: Restart server
-            command: ssh -o "StrictHostKeyChecking no" ec2-user@$SSH_HOST "docker-compose pull && docker-compose up -d --remove-orphans"
+            command: ssh -o "StrictHostKeyChecking no" ec2-user@$SSH_HOST "sudo docker-compose pull && sudo docker-compose up -d --remove-orphans"
 workflows:
     deployment:
       jobs:

@@ -20,7 +20,7 @@ COPY . .
 
 EXPOSE 3000
 
-RUN npm install
+RUN npm ci --only=production
 RUN npm run build
 
-CMD ["npm start"]
+CMD ["npm", "start"]
