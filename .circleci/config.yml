@@ -22,13 +22,15 @@ jobs:
             fingerprints:
               - "38:94:62:c4:7e:1a:19:e9:98:5b:fd:b1:a4:61:21:f4"
         - checkout
+        - setup_remote_docker:
+            docker_layer_caching: true
         - run: 
             name: Copy docker-compose.yml to VM
             command: scp -o "StrictHostKeyChecking no" ~/app/docker-compose.yml ec2-user@$SSH_HOST:docker-compose.yml
         - run: 
             name: Build and push image
             command: | 
-              source ./bin/build_image
+              source ~/app/bin/build_image.sh
               echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
               docker push 1236dheerajp/git-center-server:latest
         - run: 
