@@ -23,18 +23,21 @@ jobs:
               - "38:94:62:c4:7e:1a:19:e9:98:5b:fd:b1:a4:61:21:f4"
         - checkout
         - setup_remote_docker
+        - run:
+            name: Create env files
+            command: source ~/app/bin/export_env.sh
         - run: 
-            name: Copy docker-compose.yml to VM
-            command: scp -o "StrictHostKeyChecking no" ~/app/docker-compose.yml ec2-user@$SSH_HOST:docker-compose.yml
+            name: Copy docker-compose.yml and environment files to VM
+            command: scp -o "StrictHostKeyChecking no" ~/app/docker-compose.yml ~/app/.env ~/app/server-variables.env ec2-user@$SSH_HOST:~/
         - run: 
             name: Build and push image
             command: | 
-              source ~/app/bin/build_image.sh
+              docker build -t 1236dheerajp/git-center-server:latest ~/app
               echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
               docker push 1236dheerajp/git-center-server:latest
         - run: 
             name: Restart server
-            command: ssh -o "StrictHostKeyChecking no" ec2-user@$SSH_HOST "sudo docker-compose pull && sudo docker-compose up -d --remove-orphans"
+            command: ssh -o "StrictHostKeyChecking no" ec2-user@$SSH_HOST "docker-compose pull && docker-compose up -d --remove-orphans"
 workflows:
     deployment:
       jobs:

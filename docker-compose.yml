@@ -6,13 +6,16 @@ services:
       - "27017:27017"
   web:
     image: 1236dheerajp/git-center-server:latest
+    env_file:
+      - server-variables.env
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
     ports:
       - "3000:3000"
+    user: ${CURRENT_USER}
     volumes:
-      - /home/git/repos:/usr/src/repos
+      - ${HOST_REPOS_PATH}:${CONTAINER_REPOS_PATH}
     depends_on:
       - mongo
