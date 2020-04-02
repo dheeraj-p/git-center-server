@@ -1,3 +1,5 @@
-export default function Home() {
-  return <h2>`${JSON.stringify(process.env)}`</h2>;
+import Home from '../components/Home/Home';
+
+export default function Index() {
+  return <Home />;
 }
