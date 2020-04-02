@@ -1,7 +1,3 @@
 export default function Home() {
-  return (
-    <h2>
-      Welcome to GitCenter
-    </h2>
-  );
+  return <h2>`${JSON.stringify(process.env)}`</h2>;
 }
