@@ -9,13 +9,13 @@ export default function Home() {
       <Header />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-7">
-            <div className="row">
-              <div className="col-md-12"><CreateRepository /></div>
-              <div className="col-md-12"><AddSSHKey /></div>
+          <div className="col-md">
+            <div className="d-flex flex-column">
+              <CreateRepository />
+              <AddSSHKey />
             </div>
           </div>
-          <div className="col-md-5">
+          <div className="col-md">
             <Repositories />
           </div>
         </div>
