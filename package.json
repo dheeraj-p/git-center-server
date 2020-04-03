@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next",
-    "test": "echo Passed!",
+    "test": "jest",
     "build": "next build",
     "start": "next start"
   },
@@ -24,5 +24,10 @@
     "next": "^9.3.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest": "^25.2.7"
   }
 }
