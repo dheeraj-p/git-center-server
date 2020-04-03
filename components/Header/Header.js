@@ -2,9 +2,9 @@ import HeaderStyles from './Header.style';
 
 export default function Header() {
   return (
-    <h1 className='header'>
-      Git Center
+    <nav className='navbar navbar-dark header'>
+      GitCenter
       <style jsx>{HeaderStyles}</style>
-    </h1>
+    </nav>
   );
 }

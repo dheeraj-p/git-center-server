@@ -1,10 +1,11 @@
 import css from 'styled-jsx/css';
+import colors from '../../styles/colors';
 
 const HeaderStyles = css`
   .header {
-    display: flex;
-    border: 1px solid black;
-    padding: 10px;
+    background-color: ${colors.colorBackgroundDark};
+    color: ${colors.colorTextLight};
+    font-size: 1.8em;
   }
 `;
 

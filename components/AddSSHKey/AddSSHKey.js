@@ -7,8 +7,10 @@ export default function AddSSHKey() {
         repositories.
       </p>
       <div>
-        <input type='text' name='repoName' placeholder='Your public key here' />
-        <button>Add Key</button>
+        <input type='text' name='repoName' class="form-control" placeholder='Your public key here' />
+        <button type='button' class='btn btn-primary'>
+          Add Key
+        </button>
       </div>
     </div>
   );
