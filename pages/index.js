@@ -1,6 +1,6 @@
 import Home from '../components/Home/Home';
 import Head from 'next/head'
-import GlobalStyles from '../styles/Global.style';
+import GlobalStyles from '../styles/global.style';
 
 export default function Index() {
   return (
@@ -15,7 +15,7 @@ export default function Index() {
         />
       </Head>
       <Home />
-      {/* <style jsx>{GlobalStyles}</style> */}
+      <style jsx>{GlobalStyles}</style>
     </div>
   );
 }

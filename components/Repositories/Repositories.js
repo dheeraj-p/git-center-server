@@ -2,18 +2,17 @@ import RepositoriesStyles from './Repositories.style';
 
 export default function Repositories({}) {
   return (
-    <ol className='repo-container'>
-      {[{ name: 'some' }].map(r => {
-        return (
-          <li className='repo'>
-            <span> {r.name}</span>
-            <button type='button' class='btn btn-primary'>
-              clone
-            </button>
-          </li>
-        );
-      })}
+    <div className="card mt-2 repos-container">
+      <div className="card-body">
+        <h5 className="card-title">Repositories</h5>
+        <ul>
+          <li>First</li>
+          <li>Second</li>
+          <li>Third</li>
+          <li>Fourth</li>
+        </ul>
+      </div>
       <style jsx>{RepositoriesStyles}</style>
-    </ol>
+    </div>
   );
 }

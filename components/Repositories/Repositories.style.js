@@ -2,9 +2,10 @@ import css from 'styled-jsx/css';
 import colors from '../../styles/colors';
 
 const RepositoriesStyles = css`
-  .repo-container {
-    margin: 20px;
-    padding: 15px;
+  @media (min-width: 768px) {
+    .repos-container {
+      min-height: 90vh;
+    }
   }
 `;
 

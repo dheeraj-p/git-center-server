@@ -1,9 +1,10 @@
 import css from 'styled-jsx/css';
+import colors from './colors';
 
 const GlobalStyles = css.global`
-  html, body {
-    margin: 0;
-    padding: 0;
+  html,
+  body {
+    background: ${colors.colorBackgroundLight};
   }
 `;
 

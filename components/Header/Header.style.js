@@ -4,8 +4,10 @@ import colors from '../../styles/colors';
 const HeaderStyles = css`
   .header {
     background-color: ${colors.colorBackgroundDark};
+  }
+
+  .header > .title{
     color: ${colors.colorTextLight};
-    font-size: 1.8em;
   }
 `;
 
