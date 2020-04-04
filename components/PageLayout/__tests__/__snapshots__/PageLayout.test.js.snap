@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageLayout should render properly 1`] = `
+"<Fragment>
+  <Head>
+    <title className=\\"jsx-235099215\\">
+      title
+    </title>
+    <link rel=\\"stylesheet\\" href=\\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\\" integrity=\\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\\" crossOrigin=\\"anonymous\\" className=\\"jsx-235099215\\" />
+  </Head>
+  <div className=\\"jsx-235099215\\">
+    <Header />
+    <DummyComponent />
+    Î
+  </div>
+  <JSXStyle id=\\"235099215\\">
+    h
+    t
+    m
+    l
+    ,
+    b
+    o
+    d
+    y
+    {
+    b
+    a
+    c
+    k
+    g
+    r
+    o
+    u
+    n
+    d
+    :
+    w
+    h
+    i
+    t
+    e
+    s
+    m
+    o
+    k
+    e
+    ;
+    }
+  </JSXStyle>
+</Fragment>"
+`;
