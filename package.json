@@ -22,16 +22,21 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
+    "mongoose": "^5.9.7",
     "next": "^9.3.3",
     "next-connect": "^0.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^1.1.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "husky": "^4.2.3",
-    "jest": "^25.2.7"
+    "jest": "^25.2.7",
+    "next-server": "^9.0.5",
+    "supertest": "^4.0.2",
+    "test-listen": "^1.1.0"
   },
   "husky": {
     "hooks": {

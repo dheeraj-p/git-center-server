@@ -1,29 +1,17 @@
 import nextConnect from 'next-connect';
+import Repository from '../../models/repository';
+import withDatabase from '../../middleware/database_connection';
 
 const handler = nextConnect();
 
-handler.get((req, res) => {
-  const repositories = [
-    { name: 'git-center-server' },
-    { name: 'pattern-assignments' },
-    { name: 'awk' },
-    { name: 'a-repo-with-a-very-very-very-long-name' },
-    { name: 'using-git' },
-    { name: 'html-assignments' },
-    { name: 'a-new-thing' },
-    { name: 'rolling-pawns' },
-    { name: 'any-other-repo' },
-    { name: 'too-may-repos' },
-    { name: 'over-flowing-container' },
-    { name: 'boot-strap' },
-    { name: 'github-source' },
-    { name: 'sauron' }
-  ];
-  
+handler.use(withDatabase);
+
+handler.get(async (_req, res) => {
+  const repositories = await Repository.findPublicRepos();
   res.send({
     error: false,
     message: 'Listed All Repositories',
-    data: { repositories }
+    data: { repositories },
   });
 });
 
