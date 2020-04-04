@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import CreateRepository from '../CreateRepository/CreateRepository';
 import AddSSHKey from '../AddSSHKey/AddSSHKey';
 
-export default function Home() {
+export default function Home({repositories}) {
   return (
     <div>
       <Header />
@@ -16,7 +16,7 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md">
-            <Repositories />
+            <Repositories repositories={repositories}/>
           </div>
         </div>
       </div>

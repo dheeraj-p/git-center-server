@@ -6,19 +6,8 @@ exports[`Repositories should render properly 1`] = `
     <h5 className=\\"jsx-610830026 card-title\\">
       Repositories
     </h5>
-    <ul className=\\"jsx-610830026\\">
-      <li className=\\"jsx-610830026\\">
-        First
-      </li>
-      <li className=\\"jsx-610830026\\">
-        Second
-      </li>
-      <li className=\\"jsx-610830026\\">
-        Third
-      </li>
-      <li className=\\"jsx-610830026\\">
-        Fourth
-      </li>
+    <ul className=\\"jsx-610830026 list-group\\">
+      <RepositoryListItem name=\\"test\\" />
     </ul>
   </div>
   <JSXStyle id=\\"610830026\\">

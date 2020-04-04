@@ -12,7 +12,7 @@ export default function AddSSHKey() {
             />
           </div>
           <div className="col-12 col-md-3 align-self-end">
-            <button type="button" className="btn btn-primary w-100 ml-md-2">
+            <button type="button" className="btn btn-success w-100 ml-md-2">
               Add Key
             </button>
           </div>

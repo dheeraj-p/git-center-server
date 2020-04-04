@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header should render properly 1`] = `
-"<nav className=\\"jsx-1483795907 navbar header\\">
-  <h3 className=\\"jsx-1483795907\\">
-    <small className=\\"jsx-1483795907 text-light\\">
-      GitCenter
-    </small>
-  </h3>
-  <JSXStyle id=\\"1483795907\\">
+"<nav className=\\"jsx-1884783303 navbar navbar-default header\\">
+  <div className=\\"jsx-1884783303 container-fluid\\">
+    <h3 className=\\"jsx-1884783303\\">
+      <small className=\\"jsx-1884783303 text-light\\">
+        GitCenter
+      </small>
+    </h3>
+  </div>
+  <JSXStyle id=\\"1884783303\\">
     .
     h
     e
@@ -21,15 +23,15 @@ exports[`Header should render properly 1`] = `
     x
     -
     1
+    8
+    8
     4
+    7
     8
     3
-    7
-    9
-    5
-    9
+    3
     0
-    7
+    3
     {
     b
     a
@@ -55,6 +57,89 @@ exports[`Header should render properly 1`] = `
     8
     2
     8
+    ;
+    p
+    o
+    s
+    i
+    t
+    i
+    o
+    n
+    :
+    -
+    w
+    e
+    b
+    k
+    i
+    t
+    -
+    s
+    t
+    i
+    c
+    k
+    y
+    ;
+    p
+    o
+    s
+    i
+    t
+    i
+    o
+    n
+    :
+    -
+    w
+    e
+    b
+    k
+    i
+    t
+    -
+    s
+    t
+    i
+    c
+    k
+    y
+    ;
+    p
+    o
+    s
+    i
+    t
+    i
+    o
+    n
+    :
+    s
+    t
+    i
+    c
+    k
+    y
+    ;
+    t
+    o
+    p
+    :
+    0
+    ;
+    z
+    -
+    i
+    n
+    d
+    e
+    x
+    :
+    1
+    0
+    0
+    0
     ;
     }
   </JSXStyle>

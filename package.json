@@ -21,6 +21,7 @@
   "homepage": "https://github.com/dheeraj-p/git-center-server#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.3",
     "next-connect": "^0.6.1",
     "react": "^16.13.1",
