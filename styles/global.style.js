@@ -6,6 +6,15 @@ const GlobalStyles = css.global`
   body {
     background: ${colors.colorBackgroundLight};
   }
+
+  .btn-primary {
+    background-color: ${colors.colorButtonPrimary};
+    border-color: ${colors.colorButtonPrimary};
+  }
+
+  .btn-primary :hover{
+    background-color: ${colors.colorButtonPrimaryDark};
+  }
 `;
 
 export default GlobalStyles;

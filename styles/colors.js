@@ -1,6 +1,8 @@
 const colors = {
-  colorBackgroundDark: '#1b262c',
+  colorBackgroundDark: '#2c2828',
   colorBackgroundLight: 'whitesmoke',
+  colorButtonPrimary: '#219850',
+  colorButtonPrimaryDark: '#166937',
   colorTextLight: 'whitesmoke',
   colorTextPrimary: '#2e2e2e'
 };
