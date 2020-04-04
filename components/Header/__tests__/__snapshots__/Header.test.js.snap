@@ -49,12 +49,12 @@ exports[`Header should render properly 1`] = `
     r
     :
     #
-    1
-    b
-    2
-    6
     2
     c
+    2
+    8
+    2
+    8
     ;
     }
   </JSXStyle>
