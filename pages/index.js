@@ -7,15 +7,17 @@ import Repositories from '../components/Repositories/Repositories';
 export default function Index({ repositories }) {
   return (
     <PageLayout title="GitCenter">
-      <div className="container-fluid">
+      <div className="container-md pb-3">
         <div className="row">
-          <div className="col-md">
-            <div className="d-flex flex-column">
-              <CreateRepository />
-              <AddSSHKey />
-            </div>
+          <div className="col-lg align-self-center">
+            <CreateRepository />
           </div>
-          <div className="col-md">
+          <div className="col-lg">
+            <AddSSHKey />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
             <Repositories repositories={repositories} />
           </div>
         </div>

@@ -1,4 +1,3 @@
-import RepositoriesStyles from './Repositories.style';
 import RepositoryListItem from '../RepositoryListItem/RepositoryListItem';
 
 export default function Repositories({repositories}) {
@@ -12,7 +11,6 @@ export default function Repositories({repositories}) {
           ))}
         </ul>
       </div>
-      <style jsx>{RepositoriesStyles}</style>
     </div>
   );
 }
