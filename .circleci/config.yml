@@ -28,7 +28,7 @@ jobs:
             command: source ~/app/bin/export_env.sh
         - run: 
             name: Copy docker-compose.yml and environment files to VM
-            command: scp -o "StrictHostKeyChecking no" ~/app/docker-compose.yml ~/app/.env ~/app/server-variables.env ec2-user@$SSH_HOST:~/
+            command: scp -o "StrictHostKeyChecking no" ~/app/docker-compose.yml ~/app/bin/deploy.sh  ~/app/.env ~/app/server-variables.env ec2-user@$SSH_HOST:~/
         - run: 
             name: Build and push image
             command: | 
@@ -37,7 +37,7 @@ jobs:
               docker push 1236dheerajp/git-center-server:latest
         - run: 
             name: Restart server
-            command: ssh -o "StrictHostKeyChecking no" ec2-user@$SSH_HOST "docker-compose pull && docker-compose up -d --remove-orphans"
+            command: ssh -o "StrictHostKeyChecking no" ec2-user@$SSH_HOST "source deploy.sh"
 workflows:
     deployment:
       jobs:
