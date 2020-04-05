@@ -22,6 +22,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
+    "lodash": "^4.17.15",
     "mongoose": "^5.9.7",
     "next": "^9.3.3",
     "next-connect": "^0.6.1",
@@ -32,6 +33,7 @@
     "@shelf/jest-mongodb": "^1.1.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "faker": "^4.1.0",
     "husky": "^4.2.3",
     "jest": "^25.2.7",
     "next-server": "^9.0.5",
