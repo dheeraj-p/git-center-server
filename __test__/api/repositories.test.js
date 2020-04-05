@@ -19,27 +19,27 @@ describe('/repositories', () => {
   });
 
   describe('GET', () => {
-    let body, response, server, repositories;
+    let server, url;
 
     beforeAll(async () => {
-      let url;
-      repositories = await createDummyRepositories(5);
       [url, server] = await createTestServer(repositoriesHandler);
-      response = await fetch(url);
-      body = await response.json();
     });
 
-    afterAll(async () => {
+    afterAll(() => {
       server.close();
-      await removeAllRepositories();
     });
 
-    it('responds with HTTP 200', () => {
+    it('responds with HTTP 200', async () => {
+      const response = await fetch(url);
       expect(response.status).toBe(200);
     });
 
-    it('responds with list of repositories', () => {
-      expect(body.data).toEqual({ repositories });
+    it('responds with no error and list of repositories', async () => {
+      const repositories = await createDummyRepositories(5);
+      const response = await fetch(url);
+      const body = await response.json();
+      expect(body).toMatchObject({ error: false, data: { repositories } });
+      await removeAllRepositories();
     });
   });
 });

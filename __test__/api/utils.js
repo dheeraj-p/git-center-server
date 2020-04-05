@@ -31,6 +31,10 @@ export async function connectToTestDatabase() {
   );
 }
 
+const toJSON = (mongooseModel) => {
+  return JSON.parse(JSON.stringify(mongooseModel));
+};
+
 export async function closeTestDBConnection() {
   await mongoose.connection.close();
 }
@@ -38,7 +42,7 @@ export async function closeTestDBConnection() {
 export function createDummyRepositories(howMany) {
   return Promise.all(
     _.times(howMany, () => Repository.create({ name: faker.lorem.word() }))
-  ).then((repositories) => repositories.map((r) => r.toJSON()));
+  ).then((repositories) => repositories.map(toJSON));
 }
 
 export async function removeAllRepositories() {
