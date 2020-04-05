@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { withError } from '../utils';
+import { initBareRepository } from '../fs/git_functions';
 
 const repositorySchema = mongoose.Schema({
   name: {
@@ -14,6 +16,16 @@ const repositorySchema = mongoose.Schema({
 
 repositorySchema.statics.findPublicRepos = function () {
   return this.find({ access_type: 'public' });
+};
+
+repositorySchema.statics.createNew = async function (name) {
+  const repository = await this.create({ name });
+  const [err, _res] = await withError(initBareRepository(name));
+  if (err) {
+    await this.deleteOne({ name }).exec();
+    throw err;
+  }
+  return repository;
 };
 
 export default mongoose.model('Repository', repositorySchema);

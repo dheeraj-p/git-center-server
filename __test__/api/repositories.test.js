@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import repositoriesHandler from '../../pages/api/repositories';
+import fs from 'fs';
+import git from 'simple-git/promise';
 
 import {
   createTestServer,
@@ -9,26 +11,22 @@ import {
   removeAllRepositories,
 } from './utils';
 
+jest.mock('fs');
+jest.mock('simple-git/promise');
+
 describe('/repositories', () => {
+  let server, url;
   beforeAll(async () => {
     await connectToTestDatabase();
+    [url, server] = await createTestServer(repositoriesHandler);
   });
 
   afterAll(async () => {
+    server.close();
     await closeTestDBConnection();
   });
 
   describe('GET', () => {
-    let server, url;
-
-    beforeAll(async () => {
-      [url, server] = await createTestServer(repositoriesHandler);
-    });
-
-    afterAll(() => {
-      server.close();
-    });
-
     it('responds with HTTP 200', async () => {
       const response = await fetch(url);
       expect(response.status).toBe(200);
@@ -40,6 +38,38 @@ describe('/repositories', () => {
       const body = await response.json();
       expect(body).toMatchObject({ error: false, data: { repositories } });
       await removeAllRepositories();
+    });
+  });
+
+  describe('POST', () => {
+    let response, initFn;
+
+    beforeEach(async () => {
+      initFn = jest.fn();
+      git.mockReturnValue({ init: initFn });
+
+      response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ repositoryName: 'test-repo' }),
+      });
+    });
+
+    afterEach(() => {
+      git.mockReset();
+      fs.mkdirSync.mockReset();
+    });
+
+    it('responds with HTTP 201', () => {
+      expect(response.status).toBe(201);
+    });
+
+    it('creates a bare repository with given repository name', () => {
+      const repoName = `${process.env.REPOSITORIES_PATH}/test-repo.git`;
+
+      expect(fs.mkdirSync).toHaveBeenCalledWith(repoName, { recursive: true });
+      expect(git).toHaveBeenCalledWith(repoName);
+      expect(initFn).toHaveBeenCalledWith(true);
     });
   });
 });
