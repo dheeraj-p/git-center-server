@@ -32,5 +32,5 @@ export async function getServerSideProps(_ctx) {
   ).then((res) => res.json());
 
   const { repositories } = response.data;
-  return { props: { repositories } };
+  return { props: { repositories: repositories.reverse() } };
 }
