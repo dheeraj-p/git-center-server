@@ -9,12 +9,15 @@ exports[`AddSSHKey should render properly 1`] = `
     <p className=\\"card-text text-muted\\">
       Paste you public SSH key to access repositories.
     </p>
+    <p className=\\"m-0 text-success\\" id=\\"message\\">
+      <small />
+    </p>
     <div className=\\"row no-gutters\\">
       <div className=\\"col-12 col-md-9 mb-2 mb-md-0\\">
-        <textarea className=\\"form-control\\" placeholder=\\"Paste you public key here\\" />
+        <textarea className=\\"form-control\\" placeholder=\\"Paste you public key here\\" onChange={[Function: onSSHKeyChange]} value=\\"\\" />
       </div>
       <div className=\\"col-12 col-md-3 align-self-end\\">
-        <button type=\\"button\\" className=\\"btn btn-success w-100 ml-md-2\\">
+        <button type=\\"button\\" className=\\"btn btn-success w-100 ml-md-2\\" onClick={[Function: onSSHKeyAdd]} disabled={false}>
           Add Key
         </button>
       </div>
