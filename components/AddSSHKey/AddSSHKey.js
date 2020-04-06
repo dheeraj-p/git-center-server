@@ -3,7 +3,7 @@ import * as APIClient from '../../api_client';
 
 export default function AddSSHKey() {
   const [sshKey, setSSHKey] = useState('');
-  const [message, setMessage] = useState('');
+  const [messageState, setMessageState] = useState({value: '', class: ''});
   const [buttonDisable, setButtonDisable] = useState(false);
 
   const onSSHKeyChange = e => {
@@ -12,10 +12,14 @@ export default function AddSSHKey() {
 
   const onSSHKeyAdd = async () => {
     setButtonDisable(true);
-    setMessage('');
-    await APIClient.addSSHKey(sshKey);
+    setMessageState({value: 'Adding Key...', class: 'info'});
+    const res = await APIClient.addSSHKey(sshKey);
     setButtonDisable(false);
-    setMessage('Your SSH key has been added!');
+    if(res.error) {
+      setMessageState({value: 'Could not add SSH key!', class: 'danger'});  
+      return
+    }
+    setMessageState({value: 'Your SSH key has been added!', class: 'success'});
     setSSHKey('');
   };
 
@@ -26,8 +30,8 @@ export default function AddSSHKey() {
         <p className='card-text text-muted'>
           Paste you public SSH key to access repositories.
         </p>
-        <p className='m-0 text-success' id="message">
-          <small>{message}</small>
+        <p className={`m-0 mb-1 text-${messageState.class}`} id="message">
+          <small>{messageState.value}</small>
         </p>
         <div className='row no-gutters'>
           <div className='col-12 col-md-9 mb-2 mb-md-0'>
