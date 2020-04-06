@@ -17,5 +17,6 @@ services:
     user: ${CURRENT_USER}
     volumes:
       - ${HOST_REPOS_PATH}:${CONTAINER_REPOS_PATH}
+      - ${HOST_AUTHORIZED_KEYS_DIR}:${CONTAINER_AUTHORIZED_KEYS_DIR}
     depends_on:
       - mongo

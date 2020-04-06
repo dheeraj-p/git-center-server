@@ -41,7 +41,7 @@ describe('/ssh', () => {
     it('adds ssh key to authorized key file', () => {
       const key = 'SSH TEST KEY\n';
       expect(fs.appendFileSync).toHaveBeenCalledWith(
-        process.env.AUTHORIZED_KEY_FILE,
+        process.env.AUTHORIZED_KEYS_DIR + '/authorized_keys',
         key
       );
     });
