@@ -44,7 +44,7 @@ describe('/repositories', () => {
   describe('POST', () => {
     let response, initFn;
 
-    beforeEach(async () => {
+    beforeAll(async () => {
       initFn = jest.fn();
       git.mockReturnValue({ init: initFn });
 
@@ -53,11 +53,6 @@ describe('/repositories', () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ repositoryName: 'test-repo' }),
       });
-    });
-
-    afterEach(() => {
-      git.mockReset();
-      fs.mkdirSync.mockReset();
     });
 
     it('responds with HTTP 201', () => {

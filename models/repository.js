@@ -5,6 +5,7 @@ import { initBareRepository } from '../fs/git_functions';
 const repositorySchema = mongoose.Schema({
   name: {
     type: String,
+    unique: true,
     required: [true, "Can't create a repository without name"],
   },
   access_type: {

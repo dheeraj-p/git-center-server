@@ -39,9 +39,9 @@ export async function closeTestDBConnection() {
   await mongoose.connection.close();
 }
 
-export function createDummyRepositories(howMany) {
+export function createDummyRepositories(count) {
   return Promise.all(
-    _.times(howMany, () => Repository.create({ name: faker.lorem.word() }))
+    _.times(count, (n) => Repository.create({ name: `test-repo-${n}` }))
   ).then((repositories) => repositories.map(toJSON));
 }
 
