@@ -6,7 +6,7 @@ export default function Repositories({ repositories }) {
       <div className="card-body">
         <h5 className="card-title">Repositories</h5>
         <ul className="list-group">
-          {repositories.map((repo) => (
+          {repositories.map(repo => (
             <RepositoryListItem {...repo} key={repo.name} />
           ))}
         </ul>

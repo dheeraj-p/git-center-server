@@ -6,3 +6,7 @@ export async function withError(promise) {
     return [err, null];
   }
 }
+
+export function isClientSide(){
+  return process.browser;
+}
