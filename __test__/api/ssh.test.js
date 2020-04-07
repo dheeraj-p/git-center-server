@@ -39,10 +39,10 @@ describe('/ssh', () => {
     });
 
     it('adds ssh key to authorized key file', () => {
-      const key = 'SSH TEST KEY\n';
+      const contents = 'command="./git-serve",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty SSH TEST KEY\n';
       expect(fs.appendFileSync).toHaveBeenCalledWith(
         process.env.AUTHORIZED_KEYS_DIR + '/authorized_keys',
-        key
+        contents
       );
     });
 
