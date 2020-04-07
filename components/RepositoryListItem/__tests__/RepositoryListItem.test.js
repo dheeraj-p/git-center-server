@@ -21,4 +21,17 @@ describe('RepositoryListItem', () => {
       'git@host-from-server:repos/test.git'
     );
   });
+
+  it('shoyld change button\'s text to "Copied!" when url is copied', ()=> {
+    const wrapper = shallow(<RepositoryListItem name="test" />);
+    wrapper.find('CopyToClipboard').props().onCopy();
+
+    expect(wrapper.find("button").text()).toBe("Copied!");
+  });
+
+  it('shoyld change button\'s text to "Clone" when mouse is taken off', ()=> {
+    const wrapper = shallow(<RepositoryListItem name="test" />);
+    wrapper.find('button').props().onMouseOut();
+    expect(wrapper.find("button").text()).toBe("Clone");
+  });
 });
