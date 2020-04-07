@@ -5,6 +5,10 @@ jobs:
   test-job:
       executor:
           name: node/default
+      environment:
+        REPOSITORIES_PATH: /path/to/repositories
+        AUTHORIZED_KEYS_DIR: /path/to/authorized_keys_dir
+        SERVER_HOST: host-from-server
       steps:
         - checkout
         - run:
