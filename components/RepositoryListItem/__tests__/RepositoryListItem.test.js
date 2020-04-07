@@ -18,7 +18,7 @@ describe('RepositoryListItem', () => {
     const wrapper = shallow(<RepositoryListItem name="test" />);
     expect(wrapper.debug()).toMatchSnapshot();
     expect(wrapper.find('CopyToClipboard').prop('text')).toEqual(
-      'git@host-from-server:repos/test.git'
+      `git@${process.env.SERVER_HOST}:repos/test.git`
     );
   });
 
