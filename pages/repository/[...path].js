@@ -8,13 +8,18 @@ const CONTENT_LOADERS = {
 
 export default function RepositoryContent({ object, type, error }) {
   const ConterLoader = CONTENT_LOADERS[type];
+  const repoName = error ? 'Error' : object.repository;
   return (
-    <PageLayout title={object.repository}>
+    <PageLayout title={repoName}>
       <div className="container-md pb-3">
         <div className="card mt-2">
           <div className="card-body">
-            <h4 className="card-title mb-3">{object.repository}</h4>
-            {!error ? <ConterLoader {...object} /> : <h6>Sorry! Can't find what you are looking for!</h6>}
+            <h4 className="card-title mb-3">{repoName}</h4>
+            {!error ? (
+              <ConterLoader {...object} />
+            ) : (
+              <h6>Sorry! Can't find what you are looking for!</h6>
+            )}
           </div>
         </div>
       </div>

@@ -30,3 +30,18 @@ export async function getHeadCommitTree(repositoryName) {
 
   return { branch: branchName, entries };
 }
+
+export async function getLastCommitTreeByPath(repositoryName, branch, path) {
+  const repo = await NodeGit.Repository.openBare(repostoryPath(repositoryName));
+  const lastestCommit = await repo.getBranchCommit(branch);
+  const pathEntry = await lastestCommit.getEntry(path);
+  const pathTree = await pathEntry.getTree();
+  return pathTree.entries().map(entry => {
+    const type = entry.isBlob() ? 'blob' : 'tree';
+    return {
+      type,
+      name: entry.name(),
+      path: entry.path()
+    };
+  });
+}
