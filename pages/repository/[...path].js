@@ -37,7 +37,7 @@ export async function getServerSideProps({ params }) {
     restPath,
     baseURL
   );
-
+  console.log(message);
   if (!error) {
     return {
       props: {

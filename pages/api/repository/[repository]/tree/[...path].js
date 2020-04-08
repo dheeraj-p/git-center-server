@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import _ from 'lodash';
 import runAsyncWrapper from '../../../../../middleware/async_handler';
-import { getLastCommitTreeByPath } from '../../../../../fs/git_functions';
+import { getLatestCommitTree, openRepo } from '../../../../../fs/git_functions';
 
 const handler = nextConnect();
 
@@ -12,23 +12,24 @@ handler.get(
       path: [branch, ...restPath]
     } = req.query;
 
-    const entries = await getLastCommitTreeByPath(
-      repository,
+    const joinedPath = restPath.join('/');
+    const repositoryRef = await openRepo(repository);
+    const entries = await getLatestCommitTree(
+      repositoryRef,
       branch,
-      restPath.join('/')
+      joinedPath
     );
 
-    const content = _.sortBy(entries, ({ type }) => type == 'blob');
     res.send({
       error: false,
-      mesage: `Head commit tree for ${repository}`,
+      mesage: `Latest commit tree for ${repository} of branch ${branch}`,
       data: {
         repository,
         type: 'tree',
-        name: '/',
-        path: '/',
+        name: _.last(restPath),
+        path: `/${joinedPath}`,
         branch,
-        content
+        content: entries
       }
     });
   })
