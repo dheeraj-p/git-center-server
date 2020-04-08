@@ -11,10 +11,20 @@ export async function httpPOST(url, body) {
   return response.json();
 }
 
-export async function createRepository(repositoryName, baseURL = '') {
-  return await httpPOST(`${baseURL}/api/repositories`, { repositoryName });
+export async function httpGET(url) {
+  const response = await fetch(url);
+  return response.json();
 }
 
-export async function addSSHKey(sshKey, baseURL = '') {
-  return await httpPOST(`${baseURL}/api/ssh`, { sshKey });
+export function createRepository(repositoryName, baseURL = '') {
+  return httpPOST(`${baseURL}/api/repositories`, { repositoryName });
+}
+
+export function addSSHKey(sshKey, baseURL = '') {
+  return httpPOST(`${baseURL}/api/ssh`, { sshKey });
+}
+
+export function getGitObject(repository, type, path, baseURL = '') {
+  const repositoryURL = [repository, type, ...path].join('/');
+  return httpGET(`${baseURL}/api/repository/${repositoryURL}`);
 }

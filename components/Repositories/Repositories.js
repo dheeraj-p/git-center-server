@@ -2,7 +2,7 @@ import RepositoryListItem from '../RepositoryListItem/RepositoryListItem';
 
 export default function Repositories({ repositories }) {
   return (
-    <div className="card mt-2 repos-container">
+    <div className="card mt-2">
       <div className="card-body">
         <h5 className="card-title">Repositories</h5>
         <ul className="list-group">

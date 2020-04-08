@@ -1,0 +1,46 @@
+import PageLayout from '../../components/PageLayout/PageLayout';
+import RepositoryTree from '../../components/RepositoryTree/RepositoryTree';
+import * as APIClient from '../../api_client';
+
+const CONTENT_LOADERS = {
+  tree: RepositoryTree
+};
+
+export default function RepositoryContent({ object, type, error }) {
+  const ConterLoader = CONTENT_LOADERS[type];
+  return (
+    <PageLayout title={object.repository}>
+      <div className="container-md pb-3">
+        <div className="card mt-2">
+          <div className="card-body">
+            <h4 className="card-title mb-3">{object.repository}</h4>
+            {!error ? <ConterLoader {...object} /> : <h6>Sorry! Can't find what you are looking for!</h6>}
+          </div>
+        </div>
+      </div>
+    </PageLayout>
+  );
+}
+
+export async function getServerSideProps({ params }) {
+  const [repositoryName, type = 'tree', ...restPath] = params.path;
+
+  const baseURL = `${process.env.SERVER_PROTOCOL}://${process.env.SERVER_HOST}:${process.env.SERVER_PORT}`;
+  let { error, message, data } = await APIClient.getGitObject(
+    repositoryName,
+    type,
+    restPath,
+    baseURL
+  );
+
+  if (!error) {
+    return {
+      props: {
+        type: data.type,
+        object: { ...data } // name, branch, path, content
+      }
+    };
+  }
+
+  return { props: { error: { message } } };
+}
