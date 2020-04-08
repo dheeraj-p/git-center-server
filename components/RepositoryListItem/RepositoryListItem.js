@@ -1,4 +1,5 @@
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Link from 'next/link';
 import { isClientSide } from '../../utils';
 import { useState } from 'react';
 
@@ -12,7 +13,9 @@ export default function RepositoryListItem({ name }) {
 
   return (
     <li className="list-group-item d-flex justify-content-between align-items-center">
-      {name}
+      <Link href="/repository/[...path]" as={`/repository/${name}`}>
+        <a>{name}</a>
+      </Link>
       <CopyToClipboard text={repoPath} onCopy={() => setButtonText('Copied!')}>
         <button
           className="btn btn-outline-success btn-sm"

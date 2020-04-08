@@ -2,7 +2,7 @@ import nextConnect from 'next-connect';
 import runAsyncWrapper from '../../../../../middleware/async_handler';
 import {
   openRepo,
-  getLatestCommitTree,
+  getBranchTree,
   getCurrentBranch
 } from '../../../../../fs/git_functions';
 
@@ -13,7 +13,7 @@ handler.get(
     const { repository } = req.query;
     const repositoryRef = await openRepo(repository);
     const branch = await getCurrentBranch(repositoryRef);
-    const content = await getLatestCommitTree(repositoryRef, branch);
+    const content = await getBranchTree(repositoryRef, branch);
 
     res.send({
       error: false,

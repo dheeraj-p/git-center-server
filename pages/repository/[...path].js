@@ -5,7 +5,7 @@ import BlobView from '../../components/BlobView/BlobView';
 
 const CONTENT_LOADERS = {
   tree: RepositoryTree,
-  blob: BlobView,
+  blob: BlobView
 };
 
 export default function RepositoryContent({ object, type, error }) {
@@ -13,10 +13,10 @@ export default function RepositoryContent({ object, type, error }) {
   const repoName = error ? 'Error' : object.repository;
   return (
     <PageLayout title={repoName}>
-      <div className='container-md pb-3'>
-        <div className='card mt-2'>
-          <div className='card-body'>
-            <h4 className='card-title mb-3'>{repoName}</h4>
+      <div className="container-md pb-3">
+        <div className="card mt-2">
+          <div className="card-body">
+            <h4 className="card-title mb-3">{repoName}</h4>
             {!error ? (
               <ConterLoader {...object} />
             ) : (
@@ -30,35 +30,24 @@ export default function RepositoryContent({ object, type, error }) {
 }
 
 export async function getServerSideProps({ params }) {
-  // const [repositoryName, type = 'tree', ...restPath] = params.path;
+  const [repositoryName, type = 'tree', ...restPath] = params.path;
 
-  // const baseURL = `${process.env.SERVER_PROTOCOL}://${process.env.SERVER_HOST}:${process.env.SERVER_PORT}`;
-  // let { error, message, data } = await APIClient.getGitObject(
-  //   repositoryName,
-  //   type,
-  //   restPath,
-  //   baseURL
-  // );
-  // console.log(message);
-  // if (!error) {
-  //   return {
-  //     props: {
-  //       type: data.type,
-  //       object: { ...data } // name, branch, path, content
-  //     }
-  //   };
-  // }
+  const baseURL = `${process.env.SERVER_PROTOCOL}://${process.env.SERVER_HOST}:${process.env.SERVER_PORT}`;
+  let { error, message, data } = await APIClient.getGitObject(
+    repositoryName,
+    type,
+    restPath,
+    baseURL
+  );
 
-  // return { props: { error: { message } } };
-  return {
-    props: {
-      type: 'blob',
-      object: {
-        name: '',
-        path: '/somePath.js',
-        content: 'Some new content\nlol',
-        repository: 'First Repo',
-      },
-    },
-  };
+  if (!error) {
+    return {
+      props: {
+        type: data.type,
+        object: { ...data } // name, branch, path, content
+      }
+    };
+  }
+
+  return { props: { error: { message } } };
 }

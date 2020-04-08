@@ -28,11 +28,18 @@ const treeEntryToJSON = treeEntry => {
   };
 };
 
-export async function getLatestCommitTree(repository, branch, path) {
+export async function getBranchTree(repository, branch, path) {
   const lastestCommit = await repository.getBranchCommit(branch);
   const pathEntry = path ? await lastestCommit.getEntry(path) : lastestCommit;
   const pathTree = await pathEntry.getTree();
   return sortEntries(pathTree.entries()).map(treeEntryToJSON);
+}
+
+export async function getBranchBlob(repository, branch, path) {
+  const lastestCommit = await repository.getBranchCommit(branch);
+  const pathEntry = await lastestCommit.getEntry(path);
+  const blob = await pathEntry.getBlob();
+  return blob.content();
 }
 
 export function sortEntries(entries) {
