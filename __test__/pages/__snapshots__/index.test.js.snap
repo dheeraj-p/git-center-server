@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index should render properly 1`] = `
+"<PageLayout title=\\"GitCenter\\">
+  <div className=\\"container-md pb-3\\">
+    <div className=\\"row\\">
+      <div className=\\"col-lg align-self-center\\">
+        <CreateRepository />
+      </div>
+      <div className=\\"col-lg\\">
+        <AddSSHKey />
+      </div>
+    </div>
+    <div className=\\"row\\">
+      <div className=\\"col-12\\">
+        <Repositories repositories={{...}} />
+      </div>
+    </div>
+  </div>
+</PageLayout>"
+`;
