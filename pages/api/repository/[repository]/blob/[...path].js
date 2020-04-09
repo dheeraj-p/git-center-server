@@ -9,7 +9,7 @@ handler.get(
   runAsyncWrapper(async (req, res) => {
     const {
       repository,
-      path: [branch, ...restPath]
+      path: [branch, ...restPath],
     } = req.query;
 
     const joinedPath = restPath.join('/');
@@ -24,8 +24,8 @@ handler.get(
         name: _.last(restPath),
         path: `/${joinedPath}`,
         branch,
-        content: blobBuffer.toJSON()
-      }
+        content: blobBuffer.toJSON(),
+      },
     });
   })
 );

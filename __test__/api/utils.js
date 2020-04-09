@@ -3,13 +3,16 @@ import { apiResolver } from 'next-server/dist/server/api-utils';
 import http from 'http';
 import mongoose from 'mongoose';
 import _ from 'lodash';
-import faker from 'faker';
 import Repository from '../../models/repository';
 
-export async function createTestServer(handler, transformRequest = _.identity) {
+export async function createTestServer(
+  handler,
+  transformRequest = _.identity,
+  transResponse = _.identity
+) {
   const requestHandler = (req, res) => {
     const newRequest = transformRequest(req);
-    return apiResolver(newRequest, res, null, handler);
+    return apiResolver(newRequest, transResponse(res), null, handler);
   };
 
   const server = http.createServer(requestHandler);
