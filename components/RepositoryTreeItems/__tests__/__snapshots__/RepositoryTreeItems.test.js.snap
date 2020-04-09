@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepositoryTreeItems should render properly 1`] = `
+"<Link href=\\"/repository/[...path]\\" as=\\"/repository/testRepo/blob/master/src/blob.js\\">
+  <a className=\\"list-group-item list-group-item-action\\">
+    <FinderIcon type=\\"blob\\" />
+    <span className=\\"text-muted\\">
+      testBlob
+    </span>
+  </a>
+</Link>
+
+
+<Link href=\\"/repository/[...path]\\" as=\\"/repository/testRepo/tree/master//src\\">
+  <a className=\\"list-group-item list-group-item-action\\">
+    <FinderIcon type=\\"tree\\" />
+    <span className=\\"text-muted\\">
+      src
+    </span>
+  </a>
+</Link>"
+`;

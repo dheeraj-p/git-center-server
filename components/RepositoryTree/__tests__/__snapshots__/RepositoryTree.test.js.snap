@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepositoryTree should render properly 1`] = `
+"<Fragment>
+  <p className=\\"text-muted\\">
+    test/path
+  </p>
+  <div className=\\"list-group mt-3\\">
+    <RepositoryTreeItems repository=\\"testRepo\\" branch=\\"master\\" content={{...}} />
+  </div>
+</Fragment>"
+`;
