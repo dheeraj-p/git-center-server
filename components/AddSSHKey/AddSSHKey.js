@@ -28,7 +28,7 @@ export default function AddSSHKey() {
       <div className='card-body'>
         <h5 className='card-title'>Add SSH Key</h5>
         <p className='card-text text-muted'>
-          Paste you public SSH key to access repositories.
+          Paste your public SSH key to access repositories.
         </p>
         <p className={`m-0 mb-1 text-${messageState.class}`} id="message">
           <small>{messageState.value}</small>

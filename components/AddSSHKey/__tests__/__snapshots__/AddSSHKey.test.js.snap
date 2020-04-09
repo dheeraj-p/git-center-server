@@ -7,7 +7,7 @@ exports[`AddSSHKey should render properly 1`] = `
       Add SSH Key
     </h5>
     <p className=\\"card-text text-muted\\">
-      Paste you public SSH key to access repositories.
+      Paste your public SSH key to access repositories.
     </p>
     <p className=\\"m-0 mb-1 text-\\" id=\\"message\\">
       <small />
