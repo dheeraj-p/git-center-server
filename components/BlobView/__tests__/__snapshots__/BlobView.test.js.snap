@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlobView should render properly 1`] = `
+"<Fragment>
+  <p className=\\"text-muted\\">
+    /test/path
+  </p>
+  <div>
+    <SyntaxHighlighter showLineNumbers={true} style={[undefined]}>
+      test content data
+    </SyntaxHighlighter>
+  </div>
+</Fragment>"
+`;
