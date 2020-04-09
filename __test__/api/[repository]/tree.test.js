@@ -1,15 +1,15 @@
 import fetch from 'isomorphic-unfetch';
-import blobHandler from '../../../pages/api/repository/[repository]/blob/[...path]';
+import treeHandler from '../../../pages/api/repository/[repository]/tree/[...path]';
 
 import { createTestServer } from '../utils';
 import * as gitFunctions from '../../../fs/git_functions';
 
 jest.mock('../../../fs/git_functions');
 
-describe('blob /repository/[repository]/[...path]', () => {
+describe('tree /repository/[repository]/[...path]', () => {
   let server, url;
   beforeAll(async () => {
-    [url, server] = await createTestServer(blobHandler);
+    [url, server] = await createTestServer(treeHandler);
   });
 
   afterAll(async () => {
