@@ -2,10 +2,10 @@ import nextConnect from 'next-connect';
 import _ from 'lodash';
 import runAsyncWrapper from '../../../../../middleware/async_handler';
 import { openRepo, getBranchBlob } from '../../../../../fs/git_functions';
-import BlobLogger from '../../../../../logger/blogLogger';
+import RepositoryLogger from '../../../../../logger/repositoryLogger';
 
 const handler = nextConnect();
-const logger = new BlobLogger();
+const logger = new RepositoryLogger();
 
 handler.get(
   runAsyncWrapper(async (req, res) => {
