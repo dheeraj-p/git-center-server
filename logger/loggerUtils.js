@@ -3,7 +3,9 @@ const log = (severity, message) => {
     severity,
     message,
   };
-  console.log(JSON.stringify(logMessage));
+  const prefix = '\n----------- Log  -----------\n';
+  const postfix = '\n----------------------------\n';
+  console.log(prefix + JSON.stringify(logMessage) + postfix);
 };
 
 export default log;
