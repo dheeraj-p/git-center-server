@@ -3,6 +3,7 @@ import PageLayout from '../components/PageLayout/PageLayout';
 import CreateRepository from '../components/CreateRepository/CreateRepository';
 import AddSSHKey from '../components/AddSSHKey/AddSSHKey';
 import Repositories from '../components/Repositories/Repositories';
+import { getBaseURL } from '../utils';
 
 export default function Index({ repositories }) {
   return (
@@ -27,9 +28,9 @@ export default function Index({ repositories }) {
 }
 
 export async function getServerSideProps(_ctx) {
-  const response = await fetch(
-    'http://localhost:3000/api/repositories'
-  ).then((res) => res.json());
+  const response = await fetch(`${getBaseURL()}/api/repositories`).then(res =>
+    res.json()
+  );
 
   const { repositories } = response.data;
   return { props: { repositories: repositories.reverse() } };

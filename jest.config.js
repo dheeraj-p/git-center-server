@@ -8,16 +8,15 @@ module.exports = {
   collectCoverageFrom: [
     'components/**/*.js',
     'pages/api/**/*.js',
-    '!**/*.style.js',
+    '!**/*.style.js'
   ],
   coverageThreshold: {
     global: {
       statements: 100,
       branches: 100,
       functions: 100,
-      lines: 100,
-    },
+      lines: 100
+    }
   },
-  testEnvironment: 'node',
-  preset: '@shelf/jest-mongodb',
+  preset: '@shelf/jest-mongodb'
 };

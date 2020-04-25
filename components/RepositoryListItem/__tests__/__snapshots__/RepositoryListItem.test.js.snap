@@ -7,8 +7,8 @@ exports[`RepositoryListItem should render properly on client side 1`] = `
       test
     </a>
   </Link>
-  <CopyToClipboard text=\\"git@host-from-browser:repos/test.git\\" onCopy={[Function: onCopy]} options={[undefined]}>
-    <button className=\\"btn btn-outline-success btn-sm\\" onMouseOut={[Function: onMouseOut]}>
+  <CopyToClipboard text=\\"git@host-from-browser:repos/test.git\\" onCopy={[undefined]} options={[undefined]}>
+    <button className=\\"btn btn-outline-success btn-sm\\">
       Clone
     </button>
   </CopyToClipboard>
@@ -22,8 +22,8 @@ exports[`RepositoryListItem should render properly on server side 1`] = `
       test
     </a>
   </Link>
-  <CopyToClipboard text=\\"git@host-from-server:repos/test.git\\" onCopy={[Function: onCopy]} options={[undefined]}>
-    <button className=\\"btn btn-outline-success btn-sm\\" onMouseOut={[Function: onMouseOut]}>
+  <CopyToClipboard text=\\"git@host-from-server:repos/test.git\\" onCopy={[undefined]} options={[undefined]}>
+    <button className=\\"btn btn-outline-success btn-sm\\">
       Clone
     </button>
   </CopyToClipboard>

@@ -1,11 +1,8 @@
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
 import { isClientSide } from '../../utils';
-import { useState } from 'react';
 
-export default function RepositoryListItem({ name }) {
-  const [buttonText, setButtonText] = useState('Clone');
-
+export default function RepositoryListItem({ name, onCopy }) {
   const host = isClientSide()
     ? window.location.hostname
     : process.env.SERVER_HOST;
@@ -16,13 +13,8 @@ export default function RepositoryListItem({ name }) {
       <Link href="/repository/[...path]" as={`/repository/${name}`}>
         <a>{name}</a>
       </Link>
-      <CopyToClipboard text={repoPath} onCopy={() => setButtonText('Copied!')}>
-        <button
-          className="btn btn-outline-success btn-sm"
-          onMouseOut={() => setButtonText('Clone')}
-        >
-          {buttonText}
-        </button>
+      <CopyToClipboard text={repoPath} onCopy={onCopy}>
+        <button className="btn btn-outline-success btn-sm">Clone</button>
       </CopyToClipboard>
     </li>
   );

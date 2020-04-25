@@ -7,8 +7,9 @@ exports[`Repositories should render properly 1`] = `
       Repositories
     </h5>
     <ul className=\\"list-group\\">
-      <RepositoryListItem name=\\"test\\" />
+      <RepositoryListItem name=\\"test\\" onCopy={[Function: onCopy]} />
     </ul>
   </div>
+  <Toast isVisible={false} message=\\"Copied to clipboard!\\" onClose={[Function: onCloseToast]} />
 </div>"
 `;

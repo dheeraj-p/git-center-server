@@ -22,16 +22,11 @@ describe('RepositoryListItem', () => {
     );
   });
 
-  it('shoyld change button\'s text to "Copied!" when url is copied', ()=> {
-    const wrapper = shallow(<RepositoryListItem name="test" />);
+  it('should call onCopy when url is copied', () => {
+    const onCopy = jest.fn();
+    const wrapper = shallow(<RepositoryListItem name="test" onCopy={onCopy} />);
     wrapper.find('CopyToClipboard').props().onCopy();
 
-    expect(wrapper.find("button").text()).toBe("Copied!");
-  });
-
-  it('shoyld change button\'s text to "Clone" when mouse is taken off', ()=> {
-    const wrapper = shallow(<RepositoryListItem name="test" />);
-    wrapper.find('button').props().onMouseOut();
-    expect(wrapper.find("button").text()).toBe("Clone");
+    expect(onCopy).toBeCalled();
   });
 });

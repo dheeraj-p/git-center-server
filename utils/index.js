@@ -7,6 +7,15 @@ export async function withError(promise) {
   }
 }
 
-export function isClientSide(){
+export function isClientSide() {
   return process.browser;
+}
+
+//Server Side only
+export function getBaseURL() {
+  const protocol = process.env.SERVER_PROTOCOL;
+  const host = process.env.SERVER_HOST;
+  const port = process.env.SERVER_PORT;
+
+  return `${protocol}://${host}:${port}`;
 }
