@@ -10,13 +10,13 @@ module.exports = {
     'pages/api/**/*.js',
     '!**/*.style.js'
   ],
-  coverageThreshold: {
-    global: {
-      statements: 100,
-      branches: 100,
-      functions: 100,
-      lines: 100
-    }
-  },
+  // coverageThreshold: {
+  //   global: {
+  //     statements: 100,
+  //     branches: 100,
+  //     functions: 100,
+  //     lines: 100
+  //   }
+  // },
   preset: '@shelf/jest-mongodb'
 };
