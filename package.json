@@ -32,7 +32,8 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-syntax-highlighter": "^12.2.1",
-    "simple-git": "^1.132.0"
+    "simple-git": "^1.132.0",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",

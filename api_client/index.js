@@ -4,9 +4,9 @@ export async function httpPOST(url, body) {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
   return response.json();
 }
@@ -30,5 +30,9 @@ export function getGitObject(repository, type, path, baseURL = '') {
 }
 
 export function createUser(name, username, password, baseURL = '') {
-  return httpPOST(`${baseURL}/api/user`,{ name, username, password })
+  return httpPOST(`${baseURL}/api/user`, { name, username, password });
+}
+
+export function login(username, password, baseURL = '') {
+  return httpPOST(`${baseURL}/api/login`, { username, password });
 }

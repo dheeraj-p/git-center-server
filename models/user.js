@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema({
   name: {
@@ -14,6 +14,13 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: [true, "Can't create user without password"],
   },
+  sessions: {
+    type: [String]
+  },
 });
 
-export default mongoose.model("User", UserSchema);
+UserSchema.methods.addSession = function(token) {
+  return this.model('User').updateOne({username: this.username}, {$push: {sessions: token}});
+}
+
+export default mongoose.model('User', UserSchema);
