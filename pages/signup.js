@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import PageLayout from "../components/PageLayout/PageLayout";
 import LoginPageStyles from "../styles/login.style";
 import { useState } from "react";
@@ -7,6 +8,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   return (
     <PageLayout title="GitCenter">
@@ -19,7 +21,8 @@ export default function SignUp() {
                 <form
                   onSubmit={async (e) => {
                     e.preventDefault();
-                    await APIClient.createUser(name, username, password);
+                    const res = await APIClient.createUser(name, username, password);
+                    if(!res.err) router.push('/login');
                   }}
                   className="d-flex flex-column align-content-center"
                 >
