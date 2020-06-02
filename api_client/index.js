@@ -28,3 +28,7 @@ export function getGitObject(repository, type, path, baseURL = '') {
   const repositoryURL = [repository, type, ...path].join('/');
   return httpGET(`${baseURL}/api/repository/${repositoryURL}`);
 }
+
+export function createUser(name, username, password, baseURL = '') {
+  return httpPOST(`${baseURL}/api/user`,{ name, username, password })
+}

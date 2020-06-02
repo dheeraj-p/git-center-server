@@ -35,7 +35,10 @@
     "simple-git": "^1.132.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "@shelf/jest-mongodb": "^1.1.5",
+    "babel-jest": "^26.0.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "faker": "^4.1.0",
