@@ -20,7 +20,7 @@ handler.post(
       });
     }
     const token = uuid();
-    user.addSession(token);
+    await user.addSession(token);
     res.status(201).send({
       error: false,
       message: `Logged in successfully`,

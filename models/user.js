@@ -15,12 +15,16 @@ const UserSchema = mongoose.Schema({
     required: [true, "Can't create user without password"],
   },
   sessions: {
-    type: [String]
+    type: [String],
+    default: [],
   },
 });
 
-UserSchema.methods.addSession = function(token) {
-  return this.model('User').updateOne({username: this.username}, {$push: {sessions: token}});
-}
+UserSchema.methods.addSession = function (token) {
+  return this.model('User').updateOne(
+    { username: this.username },
+    { $push: { sessions: token } }
+  );
+};
 
 export default mongoose.model('User', UserSchema);

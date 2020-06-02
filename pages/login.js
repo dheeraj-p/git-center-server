@@ -25,6 +25,8 @@ export default function Login() {
                     if (res.error) {
                       return setError(res.message);
                     }
+                    const { token } = res.data;
+                    sessionStorage.setItem('token', token);
                     router.push('/');
                   }}
                   className='d-flex flex-column align-content-center'
