@@ -13,14 +13,22 @@ const repositorySchema = mongoose.Schema({
     enum: ['private', 'public'],
     default: 'public',
   },
+  owner: {
+    type: String,
+    required: [true, 'Repository should have owner'],
+  },
 });
 
 repositorySchema.statics.findPublicRepos = function () {
   return this.find({ access_type: 'public' });
 };
 
-repositorySchema.statics.createNew = async function (name) {
-  const repository = await this.create({ name });
+repositorySchema.statics.getUserRepositories = function (username) {
+  return this.find({ owner: username });
+};
+
+repositorySchema.statics.createNew = async function (name, owner) {
+  const repository = await this.create({ name, owner });
   const [err, _res] = await withError(initBareRepository(name));
   if (err) {
     await this.deleteOne({ name }).exec();

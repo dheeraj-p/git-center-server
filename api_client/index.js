@@ -16,8 +16,8 @@ export async function httpGET(url) {
   return response.json();
 }
 
-export function createRepository(repositoryName, baseURL = '') {
-  return httpPOST(`${baseURL}/api/repositories`, { repositoryName });
+export function createRepository(repositoryName, owner, baseURL = '') {
+  return httpPOST(`${baseURL}/api/repositories`, { repositoryName, owner });
 }
 
 export function addSSHKey(sshKey, baseURL = '') {
@@ -35,4 +35,12 @@ export function createUser(name, username, password, baseURL = '') {
 
 export function login(username, password, baseURL = '') {
   return httpPOST(`${baseURL}/api/login`, { username, password });
+}
+
+export function validateSession(username, token, baseURL = '') {
+  return httpPOST(`${baseURL}/api/validateSession`, { username, token });
+}
+
+export function getUserRepositories(username, baseURL = '') {
+  return httpPOST(`${baseURL}/api/userRepositories`, { username });
 }

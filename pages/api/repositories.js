@@ -23,8 +23,8 @@ handler.get(
 
 handler.post(
   runAsyncWrapper(async (req, res) => {
-    const { repositoryName } = req.body;
-    const repository = await Repository.createNew(repositoryName);
+    const { repositoryName, owner } = req.body;
+    const repository = await Repository.createNew(repositoryName, owner);
     logger.logNewRepositoryCreated(repositoryName);
     res.status(201).send({
       error: false,

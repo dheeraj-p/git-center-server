@@ -27,7 +27,8 @@ export default function Login() {
                     }
                     const { token } = res.data;
                     sessionStorage.setItem('token', token);
-                    router.push('/');
+                    sessionStorage.setItem('username', username);
+                    window.location.reload();
                   }}
                   className='d-flex flex-column align-content-center'
                 >

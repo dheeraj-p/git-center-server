@@ -20,8 +20,16 @@ const UserSchema = mongoose.Schema({
   },
 });
 
-UserSchema.methods.addSession = function (token) {
-  return this.model('User').updateOne(
+UserSchema.statics.validateSession = async function(username, token) {
+  const user = await this.findOne({ username });
+  if (!user) {
+    return false;
+  }
+  return user.sessions.includes(token);
+};
+
+UserSchema.methods.addSession = async function (token) {
+  return await this.model('User').updateOne(
     { username: this.username },
     { $push: { sessions: token } }
   );

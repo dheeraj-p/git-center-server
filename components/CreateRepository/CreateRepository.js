@@ -11,32 +11,33 @@ export default function CreateRepository() {
   };
 
   const onClickCreateButton = async () => {
-    await APIClient.createRepository(repositoryName);
+    const owner = sessionStorage.getItem('username');
+    await APIClient.createRepository(repositoryName, owner);
     router.push('/');
   };
 
   return (
-    <div className="card mt-2">
-      <div className="card-body">
-        <h5 className="card-title">Create Repository</h5>
-        <p className="card-text text-muted">
+    <div className='card mt-2'>
+      <div className='card-body'>
+        <h5 className='card-title'>Create Repository</h5>
+        <p className='card-text text-muted'>
           Spaces are not allowed. Use '-' or '_' instead.
         </p>
-        <div className="row no-gutters">
-          <div className="col-12 col-md-9 mb-2 mb-md-0">
+        <div className='row no-gutters'>
+          <div className='col-12 col-md-9 mb-2 mb-md-0'>
             <input
-              type="text"
-              name="repoName"
-              className="form-control"
-              placeholder="Repository Name"
+              type='text'
+              name='repoName'
+              className='form-control'
+              placeholder='Repository Name'
               value={repositoryName}
               onChange={onChangeRepoName}
             />
           </div>
-          <div className="col-12 col-md-3">
+          <div className='col-12 col-md-3'>
             <button
-              type="button"
-              className="btn btn-success w-100 ml-md-2"
+              type='button'
+              className='btn btn-success w-100 ml-md-2'
               onClick={onClickCreateButton}
             >
               Create
