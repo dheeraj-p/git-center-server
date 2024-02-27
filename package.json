@@ -26,7 +26,7 @@
     "lodash": "^4.17.15",
     "mongoose": "^5.9.7",
     "next": "^9.3.3",
-    "next-connect": "^0.6.1",
+    "next-connect": "^0.13.0",
     "nodegit": "^0.26.5",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
